@@ -1,0 +1,175 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+/*General*/
+li {
+  list-style: none;
+}
+a {
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+}
+label {
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem; /* around 14px */
+  font-weight: 500; /* slightly bold for clarity */
+  color: #333; /* dark gray instead of pure black */
+  letter-spacing: 0.5px;
+}
+/*//////////////////*/
+
+header .container-fluid{
+  background-color:lightgrey;
+  height:70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px;
+  margin-bottom: 20px;
+}
+nav{
+  width:25%;
+  height: 70px;
+  padding: 15px 15px;
+  /* background-color: #f9d423; */
+}
+#logo{
+  font-size:40px;
+  text-shadow: 0cqi;
+  font-family: "Mogra", system-ui;
+  color:goldenrod
+
+}
+li{
+  list-style: none;
+}
+nav #links{
+  display: flex;
+  font-size: 15px;
+  gap:15px;
+font-family: "Raleway", sans-serif;
+font-weight: 700;
+}
+nav #links li{
+ 
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 5px;
+}
+.lr{
+  display: inline;
+}
+
+.shopping_cart{
+  display: flex;
+  
+
+}
+#user_info{
+ 
+  display: flex;
+  justify-content: space-around;
+  
+}
+#user_info i{
+  color: #fff;
+    font-size: 20px;
+    cursor: pointer;    
+}
+#user{
+  margin-top: 10px;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  color: rgba(0, 0, 0, 0.868);
+}
+
+.shopping_cart{
+  position: relative;
+  margin-right: 25px;
+  margin-top: 10px;
+}
+
+.badge{
+display: block;
+padding: 0;
+font-size: 15px;
+padding-bottom: 3px;
+ position: absolute;
+ left:28px;
+ top:3px;
+font-family: "Roboto", sans-serif;
+color: blue;}
+
+#logout {
+  border: 2px solid #d72638; /* bold crimson red */
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-family: "Raleway" sans-serif;
+  outline-offset: 3px;
+  background: linear-gradient(135deg, #ff4e50, #f9d423); 
+  color: #4a0000; 
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+#logout:hover {
+  background: linear-gradient(135deg, #d72638, #ff5f6d); 
+  color: #fff;
+  border-color: #a61c28;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+
+.carts_products{
+  position: absolute;
+  top: 80px;
+  right:60px;
+  background-color: rgb(207, 207, 220);
+}
+
+
+
+
+/* .header {
+  width: 100%;
+  height: 70px;
+  background-color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+.eclipse-logo {
+  width: 25%;
+  color: white;
+  font-size: 24px;
+}
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: aliceblue;
+}
+nav ul li{
+  list-style: none;
+  align-self: center;
+  background-color: aqua;
+}
+a {
+  display: block;
+  text-decoration: none;
+  
+}
+.links {
+  width:25%;
+  display: flex;
+  align-items: center;
+  
+  justify-content: space-around;
+  gap:5px
+} */
