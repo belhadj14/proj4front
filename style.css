@@ -27,3 +27,12 @@ margin-top: 1rem;
 .hide{
     display: none;
 }
+.cart_products{
+    position: absolute;
+    width:210px;
+    display: none !important;
+    background-color: rgb(199, 24, 106) !important;
+}
+.shopping_cart{
+    display: none !important;
+}

@@ -1,0 +1,13 @@
+.header-content{
+    height: 100px;
+    background-color: #adb2b8;
+    display: flex;
+    justify-content: space-between;
+
+}
+.header-content nav{
+ 
+    display: flex;
+    justify-content: space-between;
+
+}
