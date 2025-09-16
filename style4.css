@@ -1,13 +1,93 @@
+/**
+* ! General
+*/
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+    color:black
+}
+li{
+    list-style: none;
+}
+
+
+
+
+/**
+* ! Header
+*/
 .header-content{
     height: 100px;
-    background-color: #adb2b8;
+    background-color: #212529;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    
+
+}
+.header-content a#sc{
+    font-size: 40px;
+    color: white;
+    font-weight: 900;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
 
 }
 .header-content nav{
  
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+   
+    color:white
+
+}
+#links{
+    width:200px;
+    display: flex;
+    gap: 5px;
+    justify-content:flex-start;
+    
+    
+}
+#links li a{
+ color: aliceblue;
+ border: 2px solid white;
+ padding: 7px;
+ border-radius: 5px;
+ outline: 4px;
+    
+}
+#cartIcon{
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-right: 70px;
+}
+.cart-products{
+    position: absolute;
+    width:150px;
+    top:15%;
+    color: white;
+}
+
+.cart-products a{
+   display: block;
+   width:200px;
+    color: white;
+    background-color:grey;
+    transform: translateX(-50%);
+    padding: 5px 10px;
+    text-align: center;
+    border-radius: 5px;
+    outline-width: 2px;
+    font-size: large;
+    font-family: sans-serif;
 
 }
