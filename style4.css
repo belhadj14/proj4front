@@ -68,11 +68,11 @@ li{
     display: flex;
     align-items: center;
     position: relative;
-    margin-right: 70px;
+    /* margin-right: 20px; */
 }
 .cart-products{
     position: absolute;
-    width:150px;
+    width: 250px;
     top:15%;
     color: white;
 }
@@ -90,4 +90,23 @@ li{
     font-size: large;
     font-family: sans-serif;
 
+}
+#user-info{
+    width: 300px;
+    
+    display: flex;
+    justify-content: space-between;
+    margin-right: 30px;
+}
+.details {
+    display: flex;
+    flex-direction: column;   /* stack text + buttons vertically */
+    justify-content: center;  /* center vertically */
+    align-items: center;      /* center horizontally */
+    
+}
+
+.details-body {
+    width: 75%;        /* keep it narrower than full */
+    text-align: left;  /* text stays left-aligned */
 }
