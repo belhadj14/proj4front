@@ -28,7 +28,9 @@ const products = [
     name: "Hawkins 5L Pressure Cooker",
     category: "Cookware",
     description: "Aluminum pressure cooker ideal for fast and healthy cooking.",
-    image: "images2/Hawkins.jpg"
+    image: "images2/Hawkins.jpg",
+    price:60
+
   },
   {
     id: 5,

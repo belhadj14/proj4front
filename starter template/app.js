@@ -3,6 +3,10 @@
 //SELECT ELEMENTS
 
 const productEl=document.querySelector(".products")
+const cartEl=document.querySelector(".cart-items")
+const subTotal=document.querySelector(".subtotal")
+const Totalitems=document.querySelector(".total-items-in-cart")
+
 
 function renderProducts(){
     products.forEach((product)=>{
@@ -32,17 +36,65 @@ function renderProducts(){
 }
 renderProducts()
 
-const cart=[]
+let cart=[]
 function addTocart(id){
     if(cart.some((item)=>item.id===id)){
-        console.log(item.qte)
+        updateQte('plus',id)
+        
     }else{let itemToBeAdded=products.find((item)=>item.id===id);
 cart.push({
     ...itemToBeAdded,
     qte:1
 });
-console.log(cart)}
+}
+updateCart()
 
+};
+function updateCart(){
+    renderCartItems();
+    renderSubTotal();
+};
+
+function renderCartItems(){
+    cartEl.innerHTML="";
+    cart.forEach((item)=>{
+        return cartEl.innerHTML+=`<div class="cart-item">
+                    <div class="item-info">
+                        <img src="${item.imgSrc}">
+                        <h4>T-shirt 1</h4>
+                    </div>
+                    <div class="unit-price">
+                        <small>$</small>${item.price}
+                    </div>
+                    <div class="units">
+                        <div class="btn minus" onclick="updateQte('minus',${item.id})">-</div>
+                        <div class="number">${item.qte}</div>
+                        <div class="btn plus" onclick="updateQte('plus',${item.id})">+</div>           
+                    </div>
+                </div>`
+    })
+}
+function updateQte(action,id){
+    cart=cart.map((item)=>{
+        let qte=item.qte
+if (item.id===id){
+    if(action==='plus' && qte<item.instock){
+        qte++;
+    }else if(action==='minus' && qte>1){
+        qte--;
+    }
 }
 
-    
+        return {
+            ...item,
+            qte
+    }})
+    updateCart();
+}
+function renderSubTotal(){
+   let subtotal= cart.map((item)=>item.price*item.qte).reduce((acc,curr)=>acc+curr,0).toFixed(2);
+   let numOfitems=cart.map((item)=>item.qte).reduce((acc,curr)=>acc+curr,0);
+   subTotal.innerHTML=`${subtotal} (${numOfitems} items): $0`;
+   Totalitems.innerHTML=numOfitems
+   
+}
