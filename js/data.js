@@ -4,7 +4,7 @@ const products = [
     name: "Nespresso Essenza Mini",
     category: "Kitchen Appliances",
     description: "Compact coffee maker with fast heat-up and easy capsule system.",
-    image: "images2/nespresso.jpg",
+    image: "images/nespresso.jpg",
     price:"170"
   },
   {
@@ -12,7 +12,7 @@ const products = [
     name: "Philips ProBlend 750W",
     category: "Kitchen Appliances",
     description: "Powerful blender with multiple speed settings and durable blades.",
-    image: "images2/blender.jpg",
+    image: "images/blender.jpg",
     price:"120"
   },
   {
@@ -20,7 +20,7 @@ const products = [
     name: "Tefal Non-Stick Frying Pan 28cm",
     category: "Cookware",
     description: "Durable non-stick frying pan with Thermo-Spot heat indicator.",
-    image: "images2/tefal.jpg",
+    image: "images/tefal.jpg",
     price:"100"
   },
   {
@@ -28,7 +28,7 @@ const products = [
     name: "Hawkins 5L Pressure Cooker",
     category: "Cookware",
     description: "Aluminum pressure cooker ideal for fast and healthy cooking.",
-    image: "images2/Hawkins.jpg",
+    image: "images/Hawkins.jpg",
     price:60
 
   },
@@ -37,7 +37,7 @@ const products = [
     name: "Porcelain Dinner Plate Set (6pcs)",
     category: "Tableware & Dining",
     description: "Elegant white porcelain dinner plates, microwave and dishwasher safe.",
-    image: "images2/porcelaine.webp",
+    image: "images/porcelaine.webp",
     price:"50"
   },
   {
@@ -45,7 +45,7 @@ const products = [
     name: "Crystal Glasses (4pcs)",
     category: "Tableware & Dining",
     description: "Premium crystal water glasses with a sleek design for fine dining.",
-    image: "images2/crystal.jpg",
+    image: "images/crystal.jpg",
     price:"25"
   },
   {
@@ -53,7 +53,7 @@ const products = [
     name: "Cotton King Size Bed Sheets",
     category: "Bedding & Linen",
     description: "Soft 100% cotton sheets for king size beds, breathable and durable.",
-    image: "images2/cotton-double-bed-sheets7.jpg",
+    image: "images/cotton-double-bed-sheets7.jpg",
     price:"60"
   },
   {
@@ -61,7 +61,7 @@ const products = [
     name: "Dyson V15 Detect",
     category: "Cleaning & Home Care",
     description: "High-performance cordless vacuum cleaner with laser dust detection.",
-    image: "images2/dyson.jpg",
+    image: "images/dyson.jpg",
     price:"75"
   },
   {
@@ -69,7 +69,7 @@ const products = [
     name: "Wooden Table Lamp with Fabric Shade",
     category: "Home Decor",
     description: "Stylish bedside lamp with a wooden base and soft fabric shade.",
-    image: "images2/wood.jpg",
+    image: "images/wood.jpg",
     price:"40"
   }
 ];

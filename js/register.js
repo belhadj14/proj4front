@@ -1,35 +1,27 @@
+let email_input=document.querySelector("input[type=email]");
+let firstname_input=document.querySelector("#firstname");
+let lastname_input=document.querySelector("#lastname");
 
-const firstName=document.querySelector("#firstname")
-const lastName=document.querySelector("#lastname")
-const email=document.querySelector("#email")
-const password=document.querySelector("#password")
-const btnRegister=document.querySelector("#btnRegister")
-console.log(btnRegister);
-
+let password_input=document.querySelector("#password");
+const btnRegister=document.getElementById("btnRegister")
 
 
-btnRegister.addEventListener("click",register)
+btnRegister.addEventListener("click",function(e)
+{
+    e.preventDefault();
+    if(!email_input.value||!firstname_input.value||!lastname_input.value||!password_input.value){
+        window.alert("Please fill all the form fields")
+    }
+    else{
+        localStorage.setItem("first_name",firstname_input.value);
+        localStorage.setItem("last_name",lastname_input.value);
+        localStorage.setItem("email",email_input.value);
+        localStorage.setItem("password",password_input.value);
+
+        setTimeout(()=>{window.location="login2.html"},1500)
+
+        
+    }
 
 
-function register(e){
-     e.preventDefault();
-    if(firstName.value.trim()===""||lastName.value.trim()===""||email.value.trim()===""||password.value.trim()===""){
-    return alert("Please fill data");
-}else{
-    localStorage.setItem("first",firstName.value.trim());
-    localStorage.setItem("last",lastName.value.trim());
-    localStorage.setItem("email",email.value.trim());
-    localStorage.setItem("password",password.value.trim());
-    setTimeout(()=>{
-    window.location="login.html"
-},1500)
-
-}
-
-}
-
-
-// firstName.value="hello";
-// lastName.value="hello";
-// email.value="hello";
-// password.value="12345"
+})
