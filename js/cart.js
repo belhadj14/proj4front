@@ -20,12 +20,12 @@ function render() {
 render();
 
 cartItems = JSON.parse(localStorage.getItem("itemsIncart"));
-update_it_price();
+// subtotal();
 
 function drawItem() {
   productsDiv.innerHTML = cartItems
     .map((item) => {
-      return `<div class="card mb-3 d-flex align-items-center gap-3 me-5 col-8" style="max-width: 515px;max-height:180px">
+      return `<div class="card mb-3 d-flex align-items-center gap-3 me-5 col-5" style="max-width: 515px;max-height:180px">
                     <div class="row g-0 d-flex  p-2">
                         <div class="col-md-4">
                             <img src="${item.image}" class="img-fluid h-75  mt-3 rounded-3" alt="...">
@@ -60,9 +60,10 @@ function updateCarty() {
   
  
   drawItem();
-   update_it_price();
+  // subtotal();
   totalCalculation();
-  addCartToLocal()
+  addCartToLocal();
+  update_it_price();
   
 };
 ///
@@ -70,27 +71,30 @@ function updateCarty() {
 function updateQty(op, id) {
   cartItems = cartItems.map((item) => {
     let qte = item.qte;
-    let total = item.total*qte
+    let total = item.total
     
 
     if (item.id === id) {
+      let price=item.price
       if (op === "plus") {
-        let price = item.price;
+        
         qte++;
         total=price*qte
-      } else if (op === "minus") {
-        let price = item.price;
+      } else if (op === "minus" && qte>0) {
+        
         qte--;
         total=price*qte
       }
-    }
+       
+      }
+      
 
     return {
       ...item,
       qte,
       total:total
     };
-  });
+  }).filter(item=>item.qte>0);
   updateCarty();
 }
 
@@ -105,25 +109,27 @@ function totalCalculation() {
     .reduce((acc, curr) => acc + curr, 0);
 }else{
     total_price.innerHTML='The cart is empty';
+    items_count.innerHTML="0"
 }}
 const subtotal=()=>{
     cartItems=cartItems.map((el) => {
         el.total=el.price*el.qte;
+        return{...el,total}
       
     }); 
 }
 totalCalculation();
 function update_it_price() {
-  cartItems.forEach((el) => {
-    let total=el.total
-    total=el.price*el.price
-    return {...el,total:total}
-  })
-  
+  return cartItems.map((el) => {
+    let total = el.price * el.quantity; // Assuming you meant to multiply price by quantity
+    return {...el, total: total};
+  });
 }
-
 const removeFromCart=(id)=>{
-    cartItems=cartItems.filter(item=>item.id!==id);
+   
+      
+      cartItems=cartItems.filter(item=>item.id!==id);
+   
     updateCarty();
 }
 console.log(cartItems);

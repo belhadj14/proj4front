@@ -45,15 +45,30 @@
             </div>
         </div>
     </header>
+    <!--------------------------Search section-------------->
+    
+    <!--------------------------/Search section-------------->
 
     <!-- < ---------------------------------------------------------------------------- /**
                                            *! Cards section
     */> ------------------------------------------------------------------------------------>
     <section>
-        <div class="container-fluid">
+        <div class="container-fluid d-flex flex-column justify-content-center align-content-center">
+            <form action="" class="row d-flex w-75 bg-danger pt-2 pb-2 form-s justify-content-center align-content-center m-auto text-center">
+    
+    <select class="form-select w-25 col-12 col-md-4" aria-label="Default select example">
+        <option value="category">Search by category</option>
+        <option value="name">Search by Name</option>
+    </select>
+    <div id="input-searsh" class="col-12 col-md-7 d-flex">
+        <input class="form-control col-6 me-1" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+        
+        <label for="exampleDataList" class="col-2  border-2 bg-primary rounded fw-bold text-center">Search</label>
+    </div>
+</form>
 
 
-            <div id="products" class="container row m-auto">
+            <div id="products" class="row m-auto text-center d-flex justify-content-center">
 
             </div>
     </section>

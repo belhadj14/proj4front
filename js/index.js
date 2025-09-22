@@ -30,10 +30,10 @@ render();
 function drawItem() {
     productsDiv.innerHTML = products.map((item) => {
         
-        return `<div class="col-sm-12 col-md-4 col-lg-3 product cc border border-black rounded-2 mt-3 p-0  me-3">
+        return `<div class="col-sm-12 col-md-4 col-lg-3 product cc border border-black rounded-2 mt-3 p-0  me-3 d-flex flex-column">
                 <img class="w-100" src=${item.image} alt="">
         <div class="details text-center  d-flex flex-column justify-content-between">
-            <div class="details-body  p-1 d-flex flex-column justify-content-center align-items-start row">
+            <div class="details-body  p-1 d-flex flex-column justify-content-center align-items-center row">
                 <h5 class="w-auto text-center">${item.name}</h5>
                 <h6 class="w-auto">Price: $<span class="price-span">${item.price}</span></h6>
                 <h6 class="w-auto">Category: <span class="category-span">${item.category}</span></h6>

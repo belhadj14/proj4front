@@ -18,7 +18,7 @@ btnRegister.addEventListener("click",function(e)
         localStorage.setItem("email",email_input.value);
         localStorage.setItem("password",password_input.value);
 
-        setTimeout(()=>{window.location="login2.html"},1500)
+        setTimeout(()=>{window.location="login.html"},1500)
 
         
     }

@@ -5,7 +5,7 @@ const products = [
     category: "Kitchen Appliances",
     description: "Compact coffee maker with fast heat-up and easy capsule system.",
     image: "images/nespresso.jpg",
-    price:"170"
+    price:170
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ const products = [
     category: "Kitchen Appliances",
     description: "Powerful blender with multiple speed settings and durable blades.",
     image: "images/blender.jpg",
-    price:"120"
+    price:120
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ const products = [
     category: "Cookware",
     description: "Durable non-stick frying pan with Thermo-Spot heat indicator.",
     image: "images/tefal.jpg",
-    price:"100"
+    price:100
   },
   {
     id: 4,
@@ -38,7 +38,7 @@ const products = [
     category: "Tableware & Dining",
     description: "Elegant white porcelain dinner plates, microwave and dishwasher safe.",
     image: "images/porcelaine.webp",
-    price:"50"
+    price:50
   },
   {
     id: 6,
@@ -54,7 +54,7 @@ const products = [
     category: "Bedding & Linen",
     description: "Soft 100% cotton sheets for king size beds, breathable and durable.",
     image: "images/cotton-double-bed-sheets7.jpg",
-    price:"60"
+    price:60
   },
   {
     id: 8,
@@ -62,7 +62,7 @@ const products = [
     category: "Cleaning & Home Care",
     description: "High-performance cordless vacuum cleaner with laser dust detection.",
     image: "images/dyson.jpg",
-    price:"75"
+    price:75
   },
   {
     id: 9,
@@ -70,6 +70,6 @@ const products = [
     category: "Home Decor",
     description: "Stylish bedside lamp with a wooden base and soft fabric shade.",
     image: "images/wood.jpg",
-    price:"40"
+    price:40
   }
 ];
