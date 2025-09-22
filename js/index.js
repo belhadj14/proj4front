@@ -39,7 +39,7 @@ function drawItem() {
                 <h6 class="w-auto">Category: <span class="category-span">${item.category}</span></h6>
            </div>
             <div class="btn-icon d-inline-flex justify-content-center gap-2 align-items-center mb-auto">
-                <i class="bi bi-heart-fill fs-3"></i>
+                <i class="bi bi-heart-fill fs-3" onclick="addToFav(${item.id})" ></i>
                 <button class="p-1 bb btn-add-${item.id} rounded bg-primary fw-bolder" onclick="addToCart(${item.id})">Add to cart</button>
             </div>
        </div>
@@ -64,6 +64,9 @@ updateCart();
 function addToCart(id) {
     if (cart.find((item) => item.id === id)) {
        let itemToDel=cart.find((item)=>item.id===id);
+               itemToDel.total=itemToDel.price*itemToDel.qte
+
+       
        let add_btn=document.querySelector(".btn-add-"+itemToDel.id);
        add_btn.innerHTML="Add to cart";
        deleteItem(itemToDel.id);
@@ -76,11 +79,10 @@ function addToCart(id) {
         
         
     } else {
-        let citem = products.find((item) => item.id === id)
-    //     let add_btn=document.querySelector(".btn-add-"+citem.id);
-    //    add_btn.innerHTML="Remove from cart";
-    //    add-btn.classList.add('bg-danger');
-        cart.push({ ...citem, qte: 1 })
+        let citem = products.find((item) => item.id === id);
+        
+    
+        cart.push({ ...citem, qte: 1,total:citem.price })
         
        
        
@@ -93,7 +95,7 @@ function addToCart(id) {
 function updateCart() {
     drawItemCart();
     totalCalculation();
-    updateBtn();
+    
     localStorage.setItem("itemsIncart",JSON.stringify(cart))
 }
 function drawItemCart() {
@@ -119,14 +121,17 @@ function updateQte(op, id) {
         if(item.id===id){
             if(op==="plus"){
                 qte++;
-            }else if(op==="minus" && qte>1){
-                qte--;
+            }else if(op==="minus"){
+                qte-=1;
+                
+               
             }
         }
         return{
             ...item,
             qte
-        }});
+        }}).filter((item) => item.qte > 0);
+        
         updateCart();
     }
         
@@ -134,33 +139,27 @@ function totalCalculation(){
     let sum=cart.map((item)=>item.price*item.qte).reduce((acc,curr)=>acc+curr,0);
     items_count.innerHTML=cart.map((item)=>item.qte).reduce((acc,curr)=>acc+curr,0);
 }
-function updateBtn(){
-    // cart.forEach((item)=>{
-    //     let add_btn=document.querySelector(".btn-add-"+item.id)
-        
-    //     add_btn.innerHTML="Remove from cart";
-    //     add_btn.classList.add('bg-danger');
-    //     add_btn.style.width="200px";})
-    //     let difference = products.filter((item )=> !cart.includes(item));
-    //     difference.forEach((item)=>{
-    //     let add_btn=document.querySelector(".btn-add-"+item.id)
-        
-    //     add_btn.innerHTML="Add to cart";
-    //     add_btn.classList.add('bg-primary');
-    //     add_btn.style.width="200px";
 
-    // })
-    
-    
-    }
 function deleteItem(id){
     cart=cart.filter((item)=>item.id!==id);
     
     updateCart();
 }
 
+// let favItems=JSON.parse(localStorage.setItem("favItems", JSON.stringify(favItems)))||[];
+let favItems=[];
 
-
-
+const addToFav=(id)=>{
+   if(favItems.length>1){
+     favItems=favItems.filter(item=>item.id!==id)
+   }else{
+    let favItem=products.find(item=>item.id===id)
+    favItems.push({...favItem})
+    
+    
+   }
+    
+}
+console.log(favItems)
 
 

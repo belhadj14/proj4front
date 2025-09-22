@@ -224,3 +224,12 @@ i{
     height:200px;
     width:25%;
 }
+
+#total-price{
+    font-weight: 700;
+    font-size:large;
+    font-size: 25px;
+    font-family:'Montserrat', sans-serif;
+    text-shadow: gray 0 1px;
+    
+}
