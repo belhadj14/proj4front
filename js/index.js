@@ -25,98 +25,93 @@ function render() {
 }
 render();
 
-
+let cart = JSON.parse(localStorage.getItem("itemsIncart"))||[];
+let favItems=JSON.parse(localStorage.getItem("Favorite"))||[];
 
 function drawItem(products) {
-    productsDiv.innerHTML = products.map((item) => {
-        
-        return `<div class="col-sm-12 col-md-4 col-lg-3 product cc border border-black rounded-2 mt-3 p-0  me-3 d-flex flex-column">
-                <img class="w-100" src=${item.image} alt="">
-        <div class="details text-center  d-flex flex-column justify-content-between">
-            <div class="details-body  p-1 d-flex flex-column justify-content-center align-items-center row">
-                <h5 class="w-auto text-center">${item.name}</h5>
-                <h6 class="w-auto">Price: $<span class="price-span">${item.price}</span></h6>
-                <h6 class="w-auto">Category: <span class="category-span">${item.category}</span></h6>
-           </div>
-            <div class="btn-icon d-inline-flex justify-content-center gap-2 align-items-center mb-auto">
-                <i class="bi bi-heart-fill fs-3" onclick="addToFav(${item.id})" ></i>
-                <button class="p-1 bb btn-add-${item.id} rounded bg-primary fw-bolder" onclick="addToCart(${item.id})">Add to cart</button>
-            </div>
-       </div>
-           
-    </div>
-   
-    
-    `
-;}).join("")
+  productsDiv.innerHTML = products.map((item) => {
+    const inCart = cart.some(c => c.id === item.id);
+    const inFav = favItems.some(f => f.id === item.id);
 
+    return `
+      <div class="col-sm-12 col-md-4 col-lg-3 product cc border border-black rounded-2 mt-3 p-0 me-3 d-flex flex-column">
+        <img class="w-100" src=${item.image} alt="">
+        <div class="details text-center d-flex flex-column justify-content-between">
+          <div class="details-body p-1 d-flex flex-column justify-content-center align-items-center row">
+            <h5 class="w-auto text-center">${item.name}</h5>
+            <h6 class="w-auto">Price: $<span class="price-span">${item.price}</span></h6>
+            <h6 class="w-auto">Category: <span class="category-span">${item.category}</span></h6>
+          </div>
+          <div class="btn-icon d-inline-flex justify-content-center gap-2 align-items-center mb-auto">
+            <i class="bi bi-heart-fill fs-3 i${item.id} ${inFav ? "text-danger" : "text-secondary"}" onclick="addToFav(${item.id})"></i>
+            <button class="p-1 bb btn-add-${item.id} rounded fw-bolder ${inCart ? "bg-danger" : "bg-primary"}" onclick="addToCart(${item.id})">
+              ${inCart ? "Remove from cart" : "Add to cart"}
+            </button>
+          </div>
+        </div>
+      </div>`;
+  }).join("");
 }
+
+
 drawItem(products);
 
 
 
 
 let changeLabel=false
-let cart = JSON.parse(localStorage.getItem("itemsIncart"))||[];
+
 // updateCart();
 
 
 function addToCart(id) {
-    if (cart.find((item) => item.id === id)) {
-       let itemToDel=cart.find((item)=>item.id===id);
-               itemToDel.total=itemToDel.price*itemToDel.qte
+  let itemInCart = cart.find((item) => item.id === id);
+  let btn = document.querySelector(".btn-add-" + id);
 
-       
-       let add_btn=document.querySelector(".btn-add-"+itemToDel.id);
-       add_btn.innerHTML="Add to cart";
-       deleteItem(itemToDel.id);
-       
-    
-       
-        
+  if (itemInCart) {
+    // already in cart → remove it
+    cart = cart.filter((item) => item.id !== id);
+    btn.innerHTML = "Add to cart";
+    btn.classList.remove("bg-danger");
+    btn.classList.add("bg-primary");
+  } else {
+    // not in cart → add it
+    let citem = products.find((item) => item.id === id);
+    cart.push({ ...citem, qte: 1, total: citem.price });
 
-        // updateCart();
-        
-        
-    } else {
-        let citem = products.find((item) => item.id === id);
-        
-    
-        cart.push({ ...citem, qte: 1,total:citem.price })
-        
-       
-       
-        
-        
+    btn.innerHTML = "Remove from cart";
+    btn.classList.remove("bg-primary");
+    btn.classList.add("bg-danger");
+  }
 
-    }
-    updateCart();
+  updateCart();
 }
 
-let favItems=JSON.parse(localStorage.getItem("Favorite"))||[];
+
+
 updateCart()
 
 const addToFav = (id) => {
-
   const favItem = products.find(item => item.id === id);
+  if (!favItem) return;
 
- 
-  if (!favItem) {
-    
-    return;
-  }
-
+  const icon = document.querySelector(".i" + id); // ✅ select only one heart
 
   const exists = favItems.some(item => item.id === id);
 
   if (!exists) {
-    favItems.push(favItem); // add it
+    favItems.push(favItem);
+    icon.classList.add("text-danger");
+    icon.classList.remove("text-secondary");
   } else {
-    console.log("Already in favorites:", favItem.name);
+    favItems = favItems.filter(item => item.id !== id);
+    icon.classList.remove("text-danger");
+    icon.classList.add("text-secondary");
   }
-updateCart()
-  
+
+  updateCart();
 };
+
 updateCart()
 
 function updateCart() {
@@ -215,3 +210,7 @@ form_input.addEventListener("input", filterItems);
 form_select.addEventListener("change", filterItems);
 
 
+function toggleHeart(icon) {
+  icon.classList.toggle("text-danger");    // red
+  icon.classList.toggle("text-secondary"); // gray
+}
