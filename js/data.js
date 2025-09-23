@@ -1,4 +1,4 @@
-const products = [
+let products = [
   {
     id: 1,
     name: "Nespresso Essenza Mini",
@@ -35,7 +35,7 @@ const products = [
   {
     id: 5,
     name: "Porcelain Dinner Plate Set (6pcs)",
-    category: "Tableware & Dining",
+    category: "Tableware",
     description: "Elegant white porcelain dinner plates, microwave and dishwasher safe.",
     image: "images/porcelaine.webp",
     price:50
@@ -43,7 +43,7 @@ const products = [
   {
     id: 6,
     name: "Crystal Glasses (4pcs)",
-    category: "Tableware & Dining",
+    category: "Tableware",
     description: "Premium crystal water glasses with a sleek design for fine dining.",
     image: "images/crystal.jpg",
     price:"25"
@@ -51,7 +51,7 @@ const products = [
   {
     id: 7,
     name: "Cotton King Size Bed Sheets",
-    category: "Bedding & Linen",
+    category: "Bedding",
     description: "Soft 100% cotton sheets for king size beds, breathable and durable.",
     image: "images/cotton-double-bed-sheets7.jpg",
     price:60
@@ -59,7 +59,7 @@ const products = [
   {
     id: 8,
     name: "Dyson V15 Detect",
-    category: "Cleaning & Home Care",
+    category: "Cleaning",
     description: "High-performance cordless vacuum cleaner with laser dust detection.",
     image: "images/dyson.jpg",
     price:75

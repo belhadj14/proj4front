@@ -124,10 +124,10 @@ position: absolute;
 }
 #products,.form-s{
     width:90%;
-    background-color: aqua;
+    
 }
 .form-s{
-    width:80% !important;
+    width:70% !important;
 }
 
 
@@ -239,4 +239,37 @@ i{
     font-family:'Montserrat', sans-serif;
     text-shadow: gray 0 1px;
     
+}
+#form-select{
+    width: 300px;
+}
+#iinput-searsh{
+    margin-left: 15px !important;
+}
+label{
+    /* display: inline; */
+    margin-left: 10px;
+    color:whitesmoke;
+    background-color: blue;
+    font-weight: 900;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+i{
+    cursor: pointer;
+    pointer-events: auto;
+    text-decoration: none !important;
+    outline:none;
+}
+.fv{
+    height: 300px !important;
+}
+.favheart{
+    flex: 1 !important;
+}
+.underlined-red{
+text-decoration: underline;
+  text-decoration-color: red; /
 }

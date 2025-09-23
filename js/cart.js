@@ -2,6 +2,7 @@ const links = document.getElementById("links");
 const user = document.getElementById("user");
 const user_info = document.getElementById("user-info");
 const productsDiv = document.getElementById("products");
+const favproductsDiv = document.getElementById("favProducts");
 const items_added_Div = document.getElementById("item-added");
 const items_count = document.querySelector(".badge");
 const total_price=document.getElementById("total-price")
@@ -25,7 +26,7 @@ cartItems = JSON.parse(localStorage.getItem("itemsIncart"));
 function drawItem() {
   productsDiv.innerHTML = cartItems
     .map((item) => {
-      return `<div class="card mb-3 d-flex align-items-center gap-3 me-5 col-5" style="max-width: 515px;max-height:180px">
+      return `<div class="card mb-3 d-flex align-items-center gap-3 me-5 col-5" style="max-width: 450px;max-height:250px">
                     <div class="row g-0 d-flex  p-2">
                         <div class="col-md-4">
                             <img src="${item.image}" class="img-fluid h-75  mt-3 rounded-3" alt="...">
@@ -56,10 +57,38 @@ function drawItem() {
     .join("");
 }
 drawItem();
+favItems=JSON.parse(localStorage.getItem("Favorite"));
+function drawFav(favItems){
+  favproductsDiv.innerHTML = favItems.map((item) => {
+        
+        return `<div class="col-sm-12 col-md-4 col-lg-2 product cc  fv border border-black rounded-2 mt-3 p-0  me-3 d-flex flex-column">
+                <img class="w-100 h-50" src=${item.image} alt="">
+        <div class="details bg-blue pt-1 text-center  d-flex flex-column justify-content-start">
+            <div class="details-body  pt-1 d-flex flex-column justify-content-center align-items-center row">
+                <h6 class="w-auto text-center">${item.name}</h6>
+                <p class="w-auto text-center">Category: <span class="category-span">${item.category}</span></p>
+           </div>
+            <div class="btn-icon-fav d-inline-flex favheart justify-content-center gap-1 align-items-center mb-auto">
+                <i class="bi bi-heart-fill fs-3 text-danger" onclick="removeFav(${item.id})" ></i>
+            </div>
+       </div>
+           
+    </div>
+   
+    
+    `
+;}).join("")
+
+}
+drawFav(favItems);
+updateCarty();
+
+
 function updateCarty() {
   
  
   drawItem();
+  drawFav(favItems);
   // subtotal();
   totalCalculation();
   addCartToLocal();

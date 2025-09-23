@@ -27,7 +27,7 @@ render();
 
 
 
-function drawItem() {
+function drawItem(products) {
     productsDiv.innerHTML = products.map((item) => {
         
         return `<div class="col-sm-12 col-md-4 col-lg-3 product cc border border-black rounded-2 mt-3 p-0  me-3 d-flex flex-column">
@@ -51,14 +51,14 @@ function drawItem() {
 ;}).join("")
 
 }
-drawItem();
+drawItem(products);
 
 
 
 
 let changeLabel=false
 let cart = JSON.parse(localStorage.getItem("itemsIncart"))||[];
-updateCart();
+// updateCart();
 
 
 function addToCart(id) {
@@ -92,11 +92,40 @@ function addToCart(id) {
     }
     updateCart();
 }
+
+let favItems=JSON.parse(localStorage.getItem("Favorite"))||[];
+updateCart()
+
+const addToFav = (id) => {
+
+  const favItem = products.find(item => item.id === id);
+
+ 
+  if (!favItem) {
+    
+    return;
+  }
+
+
+  const exists = favItems.some(item => item.id === id);
+
+  if (!exists) {
+    favItems.push(favItem); // add it
+  } else {
+    console.log("Already in favorites:", favItem.name);
+  }
+updateCart()
+  
+};
+updateCart()
+
 function updateCart() {
     drawItemCart();
     totalCalculation();
+    // addToFav();
     
     localStorage.setItem("itemsIncart",JSON.stringify(cart))
+    localStorage.setItem("Favorite",JSON.stringify(favItems))
 }
 function drawItemCart() {
     items_added_Div.innerHTML = '';
@@ -147,19 +176,42 @@ function deleteItem(id){
 }
 
 // let favItems=JSON.parse(localStorage.setItem("favItems", JSON.stringify(favItems)))||[];
-let favItems=[];
 
-const addToFav=(id)=>{
-   if(favItems.length>1){
-     favItems=favItems.filter(item=>item.id!==id)
-   }else{
-    let favItem=products.find(item=>item.id===id)
-    favItems.push({...favItem})
-    
-    
-   }
-    
+
+
+
+let form_select=document.getElementById("form-select")
+let form_input=document.getElementById("form-input")
+
+
+function filterItems() {
+  let text = form_input.value.toLowerCase();
+  let categ = form_select.value;
+
+  let filtered = products.filter(item => {
+    if (categ === "name") {
+      return item.name.toLowerCase().includes(text);
+    } else if (categ === "category") {
+      return item.category.toLowerCase().includes(text);
+    } else {
+      // if nothing selected, search in both
+      return (
+        item.name.toLowerCase().includes(text) ||
+        item.category.toLowerCase().includes(text)
+      );
+    }
+  });
+
+  drawItem(filtered);
 }
-console.log(favItems)
+
+// initial render
+drawItem(products);
+
+// re-run filter whenever input or select changes
+
+// run filter on input typing and select change
+form_input.addEventListener("input", filterItems);
+form_select.addEventListener("change", filterItems);
 
 
