@@ -4,6 +4,14 @@ const user_info = document.getElementById("user-info")
 const productsDiv = document.getElementById("products");
 const items_added_Div = document.getElementById("item-added");
 const items_count = document.querySelector(".badge");
+const sc_icon = document.querySelector(".sc");
+const cart_prod = document.querySelector(".cart-products");
+sc_icon.addEventListener("click",()=>{
+let pos = window.getComputedStyle(cart_prod).display;
+cart_prod.style.display=(pos==="none")?"block":"none"
+
+})
+
 
 
 
@@ -34,7 +42,7 @@ function drawItem(products) {
     const inFav = favItems.some(f => f.id === item.id);
 
     return `
-      <div class="col-sm-12 col-md-4 col-lg-3 product cc border border-black rounded-2 mt-3 p-0 me-3 d-flex flex-column">
+      <div class="col-sm-7 col-md-3 product cc border border-black rounded-2 mt-3 p-0 me-3 d-flex flex-column">
         <img class="w-100" src=${item.image} alt="">
         <div class="details text-center d-flex flex-column justify-content-between">
           <div class="details-body p-1 d-flex flex-column justify-content-center align-items-center row">
