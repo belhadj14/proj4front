@@ -72,16 +72,20 @@ function addToCart(id) {
     // already in cart → remove it
     cart = cart.filter((item) => item.id !== id);
     btn.innerHTML = "Add to cart";
+    // btn.style.width='150px';
     btn.classList.remove("bg-danger");
     btn.classList.add("bg-primary");
+    
   } else {
     // not in cart → add it
     let citem = products.find((item) => item.id === id);
     cart.push({ ...citem, qte: 1, total: citem.price });
 
     btn.innerHTML = "Remove from cart";
+    // btn.style.width='250px';
     btn.classList.remove("bg-primary");
     btn.classList.add("bg-danger");
+    
   }
 
   updateCart();
