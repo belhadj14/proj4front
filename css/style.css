@@ -126,14 +126,26 @@ position: absolute;
    
     
 }
+#user-info li:nth-child(3) {
+  background: #05b634 !important;
+}
 .cart-products{
-    position: fixed;
+   position: fixed;
     display: none;
-    width: 25%;
-    top:15%;
-    left:92%;
+    background-color: rgb(58, 5, 27);
+    width: 18% !important;
+    max-height: 70vh;          /* limit height so scrolling works */
+    top: 15%;
+    left: 50%;                 /* use 72% instead of 92% so width fits screen */
     color: rgb(147, 31, 31);
     z-index: 10;
+    overflow-y: auto;          /* only vertical scroll */
+    overflow-x: hidden;        /* prevent horizontal scroll */
+    box-sizing: border-box;    /* ensures padding/border don’t change width */
+    background: #fff;          /* optional: white background */
+    border: 1px solid #ccc;    /* optional: outline */
+    padding: 10px;
+   margin-left: auto;
 }
 .product{
     height: 400px;
@@ -188,15 +200,20 @@ img{
     height:200px;
 }
 #item-added{
-    /* background-color: #212529; */
-    transform: translateX(-50%);
+   
+    background-color: #9acd0e;
+    /* transform: translateX(-70%); */
     margin-top: 10px;
     color: #212529;
-    width:200px;
+    width:270px;
+    margin-right: 10px;
+
    
     border-width: 3px;
     padding: 5px;
     border-radius: 5px;
+   
+    
    
     
 }
@@ -235,6 +252,9 @@ img{
     border-radius: 3px;
     border-width: 4px;
     padding: 3px 4px;
+    width:80%;
+    text-align: center;
+
 }
 /* .btn-add{
     background-color: blue !important;
@@ -331,4 +351,39 @@ text-decoration: underline;
     text-align: center;
     color: #E5E4E2;
     
+}
+.rf{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+
+}
+.rf label{
+    background-color: white !important;
+    color: black;
+    font-weight: 300;
+    
+}
+.logout-btn {
+  background-color: #e63946;   /* red tone */
+  color: #fff;                 /* white text */
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.logout-btn:hover {
+  background-color: #d62828;  
+  transform: translateY(-2px); 
+}
+
+.logout-btn:active {
+  transform: translateY(0);   
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }

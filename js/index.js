@@ -107,7 +107,7 @@ const addToFav = (id) => {
   const favItem = products.find(item => item.id === id);
   if (!favItem) return;
 
-  const icon = document.querySelector(".i" + id); // ✅ select only one heart
+  const icon = document.querySelector(".i" + id); 
 
   const exists = favItems.some(item => item.id === id);
 
@@ -138,7 +138,8 @@ function drawItemCart() {
     items_added_Div.innerHTML = '';
     cart.forEach((item) => {
         items_added_Div.innerHTML +=
-            `<div id="it-cart"><div id="tit-pr">
+            `<div id="it-cart">
+            <div id="tit-pr">
         <p id="name">${item.name}</p>
         <p id="price">price: $ ${item.price}<p/>
     </div>
