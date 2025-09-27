@@ -10,14 +10,14 @@ btnLogin.addEventListener("click",(e)=>{
     if(localStorage.getItem("email"))
     {
        if(email_input.value===localStorage.getItem("email") && password_input.value.trim()===localStorage.getItem("password")){
-        console.log("login success");
-        setTimeout(()=>{window.location="index.html"},1500)
+        alert("login success");
+        setTimeout(()=>{window.location="index.html"},1500)}
        }
        else{
-console.log("invalid credentials");
+alert("invalid credentials");
     }
     }
 
     
     
-})
+)

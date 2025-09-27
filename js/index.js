@@ -6,6 +6,13 @@ const items_added_Div = document.getElementById("item-added");
 const items_count = document.querySelector(".badge");
 const sc_icon = document.querySelector(".sc");
 const cart_prod = document.querySelector(".cart-products");
+const logout_Btn=document.getElementById("logout")
+
+
+
+
+
+
 sc_icon.addEventListener("click",()=>{
 let pos = window.getComputedStyle(cart_prod).display;
 cart_prod.style.display=(pos==="none")?"block":"none"
@@ -73,30 +80,34 @@ let changeLabel=false
 
 
 function addToCart(id) {
+  if(localStorage.getItem("email")){
   let itemInCart = cart.find((item) => item.id === id);
   let btn = document.querySelector(".btn-add-" + id);
 
   if (itemInCart) {
-    // already in cart → remove it
+    
     cart = cart.filter((item) => item.id !== id);
     btn.innerHTML = "Add to cart";
-    // btn.style.width='150px';
+    
     btn.classList.remove("bg-danger");
     btn.classList.add("bg-primary");
     
   } else {
-    // not in cart → add it
+    
     let citem = products.find((item) => item.id === id);
     cart.push({ ...citem, qte: 1, total: citem.price });
 
     btn.innerHTML = "Remove from cart";
-    // btn.style.width='250px';
+    
     btn.classList.remove("bg-primary");
     btn.classList.add("bg-danger");
     
   }
 
-  updateCart();
+  updateCart()}
+  else{
+  window.location="login.html"
+};
 }
 
 
@@ -104,6 +115,7 @@ function addToCart(id) {
 updateCart()
 
 const addToFav = (id) => {
+  if(localStorage.getItem("email")){
   const favItem = products.find(item => item.id === id);
   if (!favItem) return;
 
@@ -121,7 +133,9 @@ const addToFav = (id) => {
     icon.classList.add("text-secondary");
   }
 
-  updateCart();
+  updateCart()}else{
+    window.location="login.html"
+  };
 };
 
 updateCart()
@@ -129,6 +143,7 @@ updateCart()
 function updateCart() {
     drawItemCart();
     totalCalculation();
+    
     // addToFav();
     
     localStorage.setItem("itemsIncart",JSON.stringify(cart))
@@ -153,25 +168,39 @@ function drawItemCart() {
     })
 };
 function updateQte(op, id) {
-    cart = cart.map((item) => {
-        let qte=item.qte;
-        if(item.id===id){
-            if(op==="plus"){
-                qte++;
-            }else if(op==="minus"){
-                qte-=1;
-                
-               
-            }
+  cart = cart.map((item) => {
+    let qte = item.qte;
+
+    if (item.id === id) {
+      if (op === "plus") {
+        qte++;
+      } else if (op === "minus") {
+        qte--;
+        if (qte <= 0) {
+          cart = cart.filter(p => p.id !== id);
+
+    
+          const btn = document.querySelector(`.btn-add-${id}`);
+          if (btn) {
+            btn.textContent = "Add to cart";
+            btn.classList.remove("bg-danger");
+            btn.classList.add("bg-primary");
+          }
+
+          // return null so it will be removed later
+          return null;
         }
-        return{
-            ...item,
-            qte
-        }}).filter((item) => item.qte > 0);
-        
-        updateCart();
+      }
     }
-        
+
+    return { ...item, qte };
+  }).filter(Boolean); // remove nulls
+
+  localStorage.setItem("itemsIncart", JSON.stringify(cart));
+  updateCart();
+}
+
+       
 function totalCalculation(){
     let sum=cart.map((item)=>item.price*item.qte).reduce((acc,curr)=>acc+curr,0);
     items_count.innerHTML=cart.map((item)=>item.qte).reduce((acc,curr)=>acc+curr,0);
@@ -183,7 +212,6 @@ function deleteItem(id){
     updateCart();
 }
 
-// let favItems=JSON.parse(localStorage.setItem("favItems", JSON.stringify(favItems)))||[];
 
 
 
@@ -213,12 +241,9 @@ function filterItems() {
   drawItem(filtered);
 }
 
-// initial render
 drawItem(products);
 
-// re-run filter whenever input or select changes
 
-// run filter on input typing and select change
 form_input.addEventListener("input", filterItems);
 form_select.addEventListener("change", filterItems);
 
@@ -227,3 +252,13 @@ function toggleHeart(icon) {
   icon.classList.toggle("text-danger");    // red
   icon.classList.toggle("text-secondary"); // gray
 }
+
+
+logout_Btn.addEventListener("click",()=>{
+localStorage.clear();
+    setTimeout(() => {
+        window.location = "login.html";
+    } , 1500)
+}
+
+)
