@@ -74,9 +74,7 @@ drawItem(products);
 
 
 
-let changeLabel=false
 
-// updateCart();
 
 
 function addToCart(id) {
@@ -144,7 +142,7 @@ function updateCart() {
     drawItemCart();
     totalCalculation();
     
-    // addToFav();
+    
     
     localStorage.setItem("itemsIncart",JSON.stringify(cart))
     localStorage.setItem("Favorite",JSON.stringify(favItems))
@@ -187,14 +185,14 @@ function updateQte(op, id) {
             btn.classList.add("bg-primary");
           }
 
-          // return null so it will be removed later
+          
           return null;
         }
       }
     }
 
     return { ...item, qte };
-  }).filter(Boolean); // remove nulls
+  }).filter(Boolean);
 
   localStorage.setItem("itemsIncart", JSON.stringify(cart));
   updateCart();

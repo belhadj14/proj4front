@@ -14,7 +14,7 @@ btnLogin.addEventListener("click",(e)=>{
         setTimeout(()=>{window.location="index.html"},1500)}
        }
        else{
-alert("invalid credentials");
+          alert("invalid credentials");
     }
     }
 

@@ -153,7 +153,7 @@ function removeFromCart(id) {
 
 function removeFav(id) {
   favItems = favItems.filter(item => item.id !== id);
-  localStorage.setItem("Favorite", JSON.stringify(favItems)); // ✅ update storage
+  localStorage.setItem("Favorite", JSON.stringify(favItems)); 
   updateCarty();
 }
 

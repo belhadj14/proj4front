@@ -19,7 +19,7 @@ li {
 .btn-icon {
   display: block;
   position: absolute;
-  bottom: 10px; /* stick to bottom */
+  bottom: 10px;
   left: 50%;
   width: 250px;
   transform: translateX(-50%);
@@ -284,7 +284,6 @@ i {
 .user-inf {
   display: flex;
   width: 200px !important;
-  /* background-color: rgb(169, 140, 102); */
   justify-content: space-around;
   align-items: center;
 }
@@ -303,7 +302,6 @@ i {
   pointer-events: fill;
 
   width: 2px;
-  /* background-color: rgb(228, 223, 217); */
   margin-right: -10px;
   font-size: 15px;
   top: -2px;
@@ -322,8 +320,8 @@ i {
   font-weight: 300;
 }
 .logout-btn {
-  background-color: #e63946; /* red tone */
-  color: #fff; /* white text */
+  background-color: #e63946; 
+  color: #fff; 
   font-size: 16px;
   font-weight: 600;
   padding: 10px 20px;
